@@ -37,8 +37,17 @@ EMMISION_FACTOR = {
         "Water":0.029,
     }
 }
-st.set_page_config(layout="wide", page_title="Carbon Calculator")
-
+st.set_page_config(layout="wide", page_title="Carbon Calculator" ,initial_sidebar_state="collapsed")
+st.markdown(
+    """
+<style>
+    [data-testid="collapsedControl"] {
+        display: none
+    }
+</style>
+""",
+    unsafe_allow_html=True,
+)
 st.title('🍂Carbon Emission Calculator')
 
 #Input Values for data collection and calculation 
