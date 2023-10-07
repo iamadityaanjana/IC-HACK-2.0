@@ -4,6 +4,16 @@ import numpy as np
 from PIL import Image
 
 
+st.markdown(
+    """
+<style>
+    [data-testid="collapsedControl"] {
+        display: none
+    }
+</style>
+""",
+    unsafe_allow_html=True,
+)
 
 st.title('Know more about Carbon Emissions and footprint')
 
