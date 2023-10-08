@@ -66,18 +66,18 @@ with col1:
     distance = st.number_input('in km',key = "distance_travelled",min_value=0, step=1)
 
     st.subheader("⚡️ Monthly electricity usage")
-    electricity = st.number_input('In Kwh', key = "electricity_usage", step=1)
+    electricity = st.number_input('In Kwh', key = "electricity_usage",min_value=0, step=1)
 
 with col2:
 
     st.subheader("🍛 Daily Meals")
-    food = st.number_input('Whole Family (no. of plates)', key = "Daily_meals", step=1)
+    food = st.number_input('Whole Family (no. of plates)', key = "Daily_meals",min_value=0, step=1)
 
     st.subheader("🚿 Daily water use(approx)")
-    water = st.number_input('In litres', key = "water_usage", step=1)
+    water = st.number_input('In litres', key = "water_usage",min_value=0, step=1)
 
     st.subheader("🗑️ Daily waste (approx)")
-    waste = st.number_input('In kg', key = "waste_produced", step=1)
+    waste = st.number_input('In kg', key = "waste_produced",min_value=0, step=1)
 
 #converting units to monthly units
 if distance > 0:
