@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from streamlit.components.v1 import html
 
+#script for navigating to different pages within app
 def nav_page(page_name, timeout_secs=300):
     nav_script = """
         <script type="text/javascript">
@@ -28,6 +29,7 @@ def nav_page(page_name, timeout_secs=300):
     """ % (page_name, timeout_secs)
     html(nav_script)
 
+#emisson factors for india
 EMMISION_FACTOR = {
     "India 🇮🇳" :{
         "Transportation": 0.14,
@@ -37,6 +39,7 @@ EMMISION_FACTOR = {
         "Water":0.029,
     }
 }
+#configuring the layout of page
 st.set_page_config(layout="wide", page_title="Carbon Calculator" ,initial_sidebar_state="collapsed")
 st.markdown(
     """
@@ -79,7 +82,7 @@ with col2:
     st.subheader("🗑️ Daily waste (approx)")
     waste = st.number_input('In kg', key = "waste_produced",min_value=0, step=1)
 
-#converting units to monthly units
+#converting units to Yearly Values
 if distance > 0:
     distance = distance * 365 
 
@@ -132,6 +135,6 @@ st.session_state.per_person = (f"Emission Per Person:{Per_Person_emission} Tonne
 st.session_state.total_calc = Total_Emissions
 st.session_state.person_calc = Per_Person_emission
 
-
+#button for going to result page
 if st.button("Go to Results" , use_container_width=True , help='Get Calculations for your carbon footprint'):
  nav_page("Results")
