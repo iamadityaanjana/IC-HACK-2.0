@@ -3,8 +3,6 @@ import pandas as pd
 import numpy as np
 from streamlit.components.v1 import html
 
-st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
-
 def nav_page(page_name, timeout_secs=3):
     nav_script = """
         <script type="text/javascript">
@@ -29,6 +27,8 @@ def nav_page(page_name, timeout_secs=3):
         </script>
     """ % (page_name, timeout_secs)
     html(nav_script)
+    
+st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
 st.markdown(
     """
