@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from streamlit.components.v1 import html
 
+#script for multipage functionality ,same as main page
 def nav_page(page_name, timeout_secs=3):
     nav_script = """
         <script type="text/javascript">
@@ -27,7 +28,8 @@ def nav_page(page_name, timeout_secs=3):
         </script>
     """ % (page_name, timeout_secs)
     html(nav_script)
-    
+
+#setting page layout
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
 st.markdown(
@@ -44,6 +46,7 @@ st.title('Results')
 
 col1 , col2 = st.columns(2)
 
+#getting emission values from main page
 with col1:
  st.subheader('Category wise emissions')
  st.info(st.session_state.trans)
@@ -56,6 +59,8 @@ with col2:
  st.subheader('Total Carbon Emission')
  st.info(st.session_state.total)             
  st.info(st.session_state.per_person)
+
+#setting up logic to show warning or succes about emissions
  if st.session_state.total_calc > 2.29 :
     st.warning('Your Emissions are more than national Average!')
  else:
@@ -66,11 +71,12 @@ with col2:
 
 
 
-
+#setting up data for bar graph visualization
 data = {"footprint":["Your Average","National Average","World Average"],"Tonnes of Co2/year":[st.session_state.person_calc,2.29 , 4.70]}
 data = pd.DataFrame(data)
 data=data.set_index("footprint")
 st.bar_chart(data)
 
+#button for going to learn more page and get some educational content and (feedback, this is still under dev.)
 if st.button("Learn More" , use_container_width=True , help="Get some educational content and provide us valuable feedback"):
  nav_page("Learn_More")
